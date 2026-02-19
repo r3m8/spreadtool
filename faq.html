@@ -54,6 +54,11 @@
         <p class="faq-question" data-i18n="faq.q5.question">Why do I need to specify the timezone?</p>
         <p class="faq-answer" data-i18n="faq.q5.answer">Stock prices change throughout the trading day. Specifying the timezone ensures we fetch the correct market price for the exact time of your transaction, accounting for different market opening hours around the world.</p>
       </div>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.q6.question">How is the spread calculated?</p>
+        <p class="faq-answer" data-i18n="faq.q6.answer">The spread is calculated using the typical price formula (high+low+close)/3 for more accurate results. Due to Yahoo Finance API restrictions, we can only fetch 8 days of 1-minute granularity data per request, which limits historical accuracy beyond this timeframe.</p>
+      </div>
     </div>
 
     <div class="card">

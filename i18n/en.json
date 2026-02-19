@@ -101,6 +101,7 @@
     "q3": { "question": "What is an ISIN?", "answer": "ISIN (International Securities Identification Number) is a unique 12-character alphanumeric code that identifies a specific security. You can usually find it on your broker's statement or by searching for the stock online." },
     "q4": { "question": "Where does the market data come from?", "answer": "The calculator fetches historical price data from Yahoo Finance, which provides reliable market data for most publicly traded securities worldwide." },
     "q5": { "question": "Why do I need to specify the timezone?", "answer": "Stock prices change throughout the trading day. Specifying the timezone ensures we fetch the correct market price for the exact time of your transaction, accounting for different market opening hours around the world." },
+    "q6": { "question": "How is the spread calculated?", "answer": "The spread is calculated using the typical price formula (high+low+close)/3 for more accurate results. Due to Yahoo Finance API restrictions, we can only fetch 8 days of 1-minute granularity data per request, which limits historical accuracy beyond this timeframe." },
     "traderepublic": {
       "title": "Trade Republic",
       "question": "How to retrieve your spreads on Trade Republic?",

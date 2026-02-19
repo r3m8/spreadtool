@@ -101,6 +101,7 @@
     "q3": { "question": "Qu'est-ce qu'un ISIN?", "answer": "L'ISIN (International Securities Identification Number) est un code alphanumérique unique de 12 caractères qui identifie un titre spécifique. Tu peux généralement le trouver sur ton relevé de courtier ou en recherchant l'action en ligne." },
     "q4": { "question": "D'où viennent les données de marché?", "answer": "Le calculateur récupère les données de prix historiques depuis Yahoo Finance, qui fournit des données de marché fiables pour la plupart des titres cotés dans le monde entier." },
     "q5": { "question": "Pourquoi dois-tu spécifier le fuseau horaire?", "answer": "Les prix des actions changent tout au long de la journée de trading. Spécifier le fuseau horaire garantit que nous récupérons le bon prix du marché pour l'heure exacte de ta transaction, en tenant compte des différentes heures d'ouverture des marchés dans le monde." },
+    "q6": { "question": "Comment est calculé le spread?", "answer": "Le spread est calculé à l'aide de la formule du prix typique (haut+bas+clôture)/3 pour des résultats plus précis. En raison des restrictions de l'API Yahoo Finance, nous ne pouvons récupérer que 8 jours de données à granularité 1 minute par requête, ce qui limite la précision historique au-delà de cette période." },
     "traderepublic": {
       "title": "Trade Republic",
       "question": "Comment récupérer ses spreads sur Trade Republic ?",

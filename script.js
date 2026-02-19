@@ -111,6 +111,8 @@ async function getPriceAt(ticker, dateStr, hourVal, minVal, offsetMinutes) {
 
   const timestamps = result.timestamp                      ?? [];
   const closes     = result.indicators?.quote?.[0]?.close ?? [];
+  const highs      = result.indicators?.quote?.[0]?.high  ?? [];
+  const lows       = result.indicators?.quote?.[0]?.low   ?? [];
   const currency   = result.meta?.currency                ?? '';
 
   if (!timestamps.length)
@@ -129,8 +131,10 @@ async function getPriceAt(ticker, dateStr, hourVal, minVal, offsetMinutes) {
   if (bestDiff > 300)
     throw new Error(i18n.t('errors.farBar', { minutes: Math.round(bestDiff / 60) }));
 
+  const typicalPrice = (highs[bestIdx] + lows[bestIdx] + closes[bestIdx]) / 3;
+
   return {
-    price:       closes[bestIdx],
+    price:       typicalPrice,
     barTimeUTC:  new Date(timestamps[bestIdx] * 1000),
     diffSeconds: bestDiff,
     currency,
@@ -146,6 +150,11 @@ function fmtPrice(n, currency) {
 function fmtPct(n) {
   return (n >= 0 ? '+' : '') +
     n.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + '%';
+}
+
+function fmtBp(n) {
+  return (n >= 0 ? '+' : '') +
+    (n * 100).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' bp';
 }
 
 function fmtTimeDelta(s) {
@@ -191,7 +200,7 @@ function setSpread(spread, spreadPct, currency) {
     (currency ? ` ${currency}` : '');
   spreadEl.className = `spread-value ${cls}`;
 
-  pctEl.textContent = fmtPct(spreadPct);
+  pctEl.textContent = `${fmtPct(spreadPct)} (${fmtBp(spreadPct)})`;
   pctEl.className   = cls;
 
   block.className = `spread-block ${isGood ? 'is-good' : 'is-bad'}`;
@@ -288,7 +297,7 @@ const historyManager = {
             <span class="history-item-date">${dateStr} ${timeStr}</span>
             <span class="history-item-ticker">${entry.ticker}</span>
             <span class="history-item-spread ${spreadClass}">${entry.spread >= 0 ? '+' : ''}${entry.spread.toFixed(4)} ${entry.currency}</span>
-            <span class="history-item-pct ${spreadClass}">${entry.spreadPct >= 0 ? '+' : ''}${entry.spreadPct.toFixed(3)}%</span>
+            <span class="history-item-pct ${spreadClass}">${entry.spreadPct >= 0 ? '+' : ''}${entry.spreadPct.toFixed(3)}% (${(entry.spreadPct * 100).toFixed(0)} bp)</span>
           </div>
           <button class="history-item-delete" data-index="${index}" title="Remove">×</button>
         </div>
