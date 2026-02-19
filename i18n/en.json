@@ -1,0 +1,114 @@
+{
+  "lang": {
+    "name": "English",
+    "code": "en"
+  },
+  "title": "Stock Spread Calculator",
+  "header": {
+    "title": "Stock Spread Calculator",
+    "subtitle": "Compare your execution price to market data."
+  },
+  "nav": {
+    "faq": "FAQ",
+    "calculator": "Calculator"
+  },
+  "language": {
+    "select": "Language",
+    "en": "English",
+    "fr": "French"
+  },
+  "transaction": {
+    "title": "Transaction",
+    "isin": {
+      "label": "ISIN",
+      "placeholder": "e.g. FR0013412012"
+    },
+    "units": {
+      "label": "Number of units",
+      "placeholder": "e.g. 10"
+    },
+    "totalPaid": {
+      "label": "Total amount paid",
+      "placeholder": "e.g. 325.00"
+    },
+    "fees": {
+      "label": "Fees paid",
+      "placeholder": "e.g. 1.50"
+    },
+    "datetime": {
+      "label": "Transaction date, time & timezone"
+    },
+    "hourPlaceholder": "HH",
+    "minutePlaceholder": "MM"
+  },
+  "buttons": {
+    "calculate": "Calculate spread"
+  },
+  "placeholder": {
+    "text": "Enter your transaction details and click Calculate to see the spread analysis"
+  },
+  "results": {
+    "title": "Results",
+    "ticker": "Ticker found",
+    "marketPrice": "Market price at transaction",
+    "unitPriceExcl": "Your price per unit (excl. fees)",
+    "unitPriceIncl": "Your price per unit (incl. fees)",
+    "spread": {
+      "label": "Spread (incl. fees)",
+      "positive": "✓ Below market — favorable",
+      "negative": "⚠ Above market — spread cost"
+    }
+  },
+  "history": {
+    "title": "Calculation History",
+    "empty": "No calculations yet",
+    "clearAll": "Clear all",
+    "confirmClear": "Are you sure you want to clear all history?",
+    "average": "Average spread"
+  },
+  "errors": {
+    "isinRequired": "Please enter an ISIN.",
+    "unitsInvalid": "Please enter a valid number of units.",
+    "totalPaidInvalid": "Please enter a valid total paid.",
+    "feesNegative": "Fees cannot be negative.",
+    "dateRequired": "Please enter a transaction date.",
+    "hourInvalid": "Please enter a valid hour (0–23).",
+    "minuteInvalid": "Please enter a valid minute (0–59).",
+    "tickerNotFound": "No ticker found for ISIN \"{isin}\". Check your input.",
+    "noChartData": "No chart data returned. The market may have been closed at that time.",
+    "noBars": "No 1-minute bars in this window. The market may have been closed or the time is outside trading hours.",
+    "nullCloses": "All price bars in this window have null closes. Try a time during market hours.",
+    "farBar": "Nearest bar is {minutes} min away from your transaction time. Market may have been closed or illiquid at that time.",
+    "unexpected": "An unexpected error occurred."
+  },
+  "status": {
+    "resolving": "🔍 Resolving ticker from ISIN…",
+    "fetching": "✓ {ticker}{name} · Fetching price data…",
+    "exactMinute": "exact minute",
+    "minutesAway": "~{minutes} min away",
+    "hoursAway": "~{hours} h away"
+  },
+  "time": {
+    "utc": "UTC"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common questions about the Stock Spread Calculator.",
+    "general": { "title": "General Questions" },
+    "data": { "title": "Data & Accuracy" },
+    "q1": { "question": "What is a stock spread?", "answer": "A stock spread is the difference between the price you paid for a stock and the actual market price at the time of your transaction. It helps you understand if you got a good deal or paid more than the market rate." },
+    "q2": { "question": "How does this calculator work?", "answer": "Enter your transaction details including ISIN, number of units, total amount paid, fees, and the exact date/time of your transaction. The calculator fetches the historical market price from Yahoo Finance and compares it to your execution price." },
+    "q3": { "question": "What is an ISIN?", "answer": "ISIN (International Securities Identification Number) is a unique 12-character alphanumeric code that identifies a specific security. You can usually find it on your broker's statement or by searching for the stock online." },
+    "q4": { "question": "Where does the market data come from?", "answer": "The calculator fetches historical price data from Yahoo Finance, which provides reliable market data for most publicly traded securities worldwide." },
+    "q5": { "question": "Why do I need to specify the timezone?", "answer": "Stock prices change throughout the trading day. Specifying the timezone ensures we fetch the correct market price for the exact time of your transaction, accounting for different market opening hours around the world." },
+    "traderepublic": {
+      "title": "Trade Republic",
+      "question": "How to retrieve your spreads on Trade Republic?",
+      "answer": "Open the mobile app (desktop version doesn't support statements). Tap your profile icon (top right), go to Statement > Portfolio Statement > Securities. Set date to D+1, then check the last page for share count. Next, go to Cash > Transactions, find your transaction amount, and subtract €1 if not a scheduled plan.",
+      "data": {
+        "question": "Why are prices different from the Lang & Schwarz statement?",
+        "answer": "Currently, data is retrieved from Euronext because Lang & Schwarz does not have an API that allows high-precision data beyond 48 hours, which can slightly skew the spread."
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Spread Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <a href="faq.html" class="nav-btn" data-i18n="nav.faq">FAQ</a>
+      <div class="lang-selector">
+        <select id="lang-select">
+          <option value="en" data-i18n="language.en">English</option>
+          <option value="fr" data-i18n="language.fr">French</option>
+        </select>
+      </div>
+    </div>
+    <h1 data-i18n="header.title">Stock Spread Calculator</h1>
+    <p data-i18n="header.subtitle">Compare your execution price to market data.</p>
+  </header>
+
+  <div class="cards-container">
+    <div class="card">
+      <p class="card-title" data-i18n="transaction.title">Transaction</p>
+
+      <div class="field">
+        <label for="isin" data-i18n="transaction.isin.label">ISIN</label>
+        <input id="isin" type="text" placeholder="e.g. FR0013412012"
+               spellcheck="false" autocomplete="off" data-i18n-placeholder="transaction.isin.placeholder" />
+      </div>
+
+      <div class="field">
+        <label for="units" data-i18n="transaction.units.label">Number of units</label>
+        <input id="units" type="number" min="0" step="any" placeholder="e.g. 10"
+               onwheel="this.blur()" data-i18n-placeholder="transaction.units.placeholder" />
+      </div>
+
+      <div class="field">
+        <label for="total-paid" data-i18n="transaction.totalPaid.label">Total amount paid</label>
+        <input id="total-paid" type="number" min="0" step="any" placeholder="e.g. 325.00"
+               onwheel="this.blur()" data-i18n-placeholder="transaction.totalPaid.placeholder" />
+      </div>
+
+      <div class="field">
+        <label for="fees" data-i18n="transaction.fees.label">Fees paid</label>
+        <input id="fees" type="number" min="0" step="any" placeholder="e.g. 1.50"
+               onwheel="this.blur()" data-i18n-placeholder="transaction.fees.placeholder" />
+      </div>
+
+      <div class="field">
+        <label data-i18n="transaction.datetime.label">Transaction date, time &amp; timezone</label>
+        <div class="dt-stack">
+
+          <input id="tx-date" type="date" />
+
+          <div class="row-tu">
+            <div class="time-hm">
+              <input id="tx-hour" type="number" min="0" max="23" step="1"
+                     placeholder="HH" onwheel="this.blur()" data-i18n-placeholder="transaction.hourPlaceholder" />
+              <span class="time-sep">:</span>
+              <input id="tx-min" type="number" min="0" max="59" step="1"
+                     placeholder="MM" onwheel="this.blur()" data-i18n-placeholder="transaction.minutePlaceholder" />
+            </div>
+
+            <select id="tz-offset">
+              <option value="-720">UTC−12</option>
+              <option value="-660">UTC−11</option>
+              <option value="-600">UTC−10</option>
+              <option value="-540">UTC−9</option>
+              <option value="-480">UTC−8</option>
+              <option value="-420">UTC−7</option>
+              <option value="-360">UTC−6</option>
+              <option value="-300">UTC−5</option>
+              <option value="-240">UTC−4</option>
+              <option value="-180">UTC−3</option>
+              <option value="-120">UTC−2</option>
+              <option value="-60">UTC−1</option>
+              <option value="0">UTC±0</option>
+              <option value="60">UTC+1</option>
+              <option value="120">UTC+2</option>
+              <option value="180">UTC+3</option>
+              <option value="240">UTC+4</option>
+              <option value="300">UTC+5</option>
+              <option value="360">UTC+6</option>
+              <option value="420">UTC+7</option>
+              <option value="480">UTC+8</option>
+              <option value="540">UTC+9</option>
+              <option value="600">UTC+10</option>
+              <option value="660">UTC+11</option>
+              <option value="720">UTC+12</option>
+              <option value="780">UTC+13</option>
+              <option value="840">UTC+14</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <button id="calc-btn" data-i18n="buttons.calculate">Calculate spread</button>
+      <p id="status"></p>
+    </div>
+
+    <div class="results-wrapper">
+      <div class="card placeholder-card" id="results-placeholder">
+        <p class="card-title" data-i18n="results.title">Results</p>
+        <div class="placeholder-content">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <p data-i18n="placeholder.text">Enter your transaction details and click Calculate to see the spread analysis</p>
+        </div>
+      </div>
+
+      <div class="card loading-card hidden" id="results-loading">
+        <p class="card-title" data-i18n="results.title">Results</p>
+        <div class="loading-content">
+          <div class="spinner"></div>
+          <p data-i18n="status.resolving">Resolving ticker from ISIN…</p>
+        </div>
+      </div>
+
+      <div class="card hidden" id="results-card">
+        <p class="card-title" data-i18n="results.title">Results</p>
+
+        <div class="result-row">
+          <span class="label" data-i18n="results.ticker">Ticker found</span>
+          <span class="value" id="res-ticker">—</span>
+        </div>
+
+        <div class="result-row">
+          <span class="label" data-i18n="results.marketPrice">Market price at transaction</span>
+          <span class="value" id="res-yahoo-price">—</span>
+        </div>
+
+        <div class="result-row">
+          <span class="label" data-i18n="results.unitPriceExcl">Your price per unit (excl. fees)</span>
+          <span class="value" id="res-unit-price">—</span>
+        </div>
+
+        <div class="result-row">
+          <span class="label" data-i18n="results.unitPriceIncl">Your price per unit (incl. fees)</span>
+          <span class="value" id="res-unit-price-fees">—</span>
+        </div>
+
+        <div class="spread-block" id="spread-block">
+          <p class="spread-label" data-i18n="results.spread.label">Spread (incl. fees)</p>
+          <p class="spread-value" id="res-spread">—</p>
+          <span class="spread-verdict hidden" id="res-spread-verdict"></span>
+          <p id="res-spread-pct" class="spread-pct">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card history-card" id="history-card">
+    <div class="history-header">
+      <p class="card-title" data-i18n="history.title">Calculation History</p>
+      <div class="history-stats">
+        <span class="avg-spread" id="avg-spread">—</span>
+        <button class="clear-btn" id="clear-history" data-i18n="history.clearAll">Clear all</button>
+      </div>
+    </div>
+    <div class="history-empty" id="history-empty">
+      <p data-i18n="history.empty">No calculations yet</p>
+    </div>
+    <div class="history-list hidden" id="history-list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

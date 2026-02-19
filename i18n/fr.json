@@ -1,0 +1,114 @@
+{
+  "lang": {
+    "name": "Français",
+    "code": "fr"
+  },
+  "title": "Calculateur de Spread",
+  "header": {
+    "title": "Calculateur de Spread",
+    "subtitle": "Compare ton prix d'exécution avec les données de marché."
+  },
+  "nav": {
+    "faq": "FAQ",
+    "calculator": "Calculateur"
+  },
+  "language": {
+    "select": "Langue",
+    "en": "Anglais",
+    "fr": "Français"
+  },
+  "transaction": {
+    "title": "Transaction",
+    "isin": {
+      "label": "ISIN",
+      "placeholder": "FR0013412012"
+    },
+    "units": {
+      "label": "Nombre d'unités",
+      "placeholder": "10"
+    },
+    "totalPaid": {
+      "label": "Montant total payé",
+      "placeholder": "325.00"
+    },
+    "fees": {
+      "label": "Frais payés",
+      "placeholder": "1.50"
+    },
+    "datetime": {
+      "label": "Date, heure et fuseau horaire de la transaction"
+    },
+    "hourPlaceholder": "hh",
+    "minutePlaceholder": "mm"
+  },
+  "buttons": {
+    "calculate": "Calculer le spread"
+  },
+  "placeholder": {
+    "text": "Entre les détails de ta transaction et clique sur Calculer pour voir l'analyse du spread"
+  },
+  "results": {
+    "title": "Résultats",
+    "ticker": "Ticker trouvé",
+    "marketPrice": "Prix du marché au moment de la transaction",
+    "unitPriceExcl": "Ton prix par unité (hors frais)",
+    "unitPriceIncl": "Ton prix par unité (frais inclus)",
+    "spread": {
+      "label": "Spread (frais inclus)",
+      "positive": "✓ Sous le marché — favorable",
+      "negative": "⚠ Au-dessus du marché — coût de spread"
+    }
+  },
+  "history": {
+    "title": "Historique des calculs",
+    "empty": "Aucun calcul pour le moment",
+    "clearAll": "Tout effacer",
+    "confirmClear": "Es-tu sûr de vouloir effacer tout l'historique ?",
+    "average": "Moyenne du spread"
+  },
+  "errors": {
+    "isinRequired": "Saisis un ISIN.",
+    "unitsInvalid": "Saisis un nombre d'unités valide.",
+    "totalPaidInvalid": "Saisis un montant total valide.",
+    "feesNegative": "Les frais ne peuvent pas être négatifs.",
+    "dateRequired": "Saisis une date de transaction.",
+    "hourInvalid": "Saisis une heure valide (0–23).",
+    "minuteInvalid": "Saisis une minute valide (0–59).",
+    "tickerNotFound": "Aucun ticker trouvé pour l'ISIN \"{isin}\". Vérifie ta saisie.",
+    "noChartData": "Aucune donnée de graphique retournée. Le marché était peut-être fermé à ce moment-là.",
+    "noBars": "Aucune barre 1 minute dans cette fenêtre. Le marché était peut-être fermé ou l'heure en dehors des heures de trading.",
+    "nullCloses": "Toutes les barres de prix dans cette fenêtre ont des clôtures nulles. Essayez une heure pendant les heures de marché.",
+    "farBar": "La barre la plus proche est à {minutes} min de ton heure de transaction. Le marché était peut-être fermé ou illiquide à ce moment-là.",
+    "unexpected": "Une erreur inattendue s'est produite."
+  },
+  "status": {
+    "resolving": "🔍 Résolution du ticker depuis l'ISIN…",
+    "fetching": "✓ {ticker}{name} · Récupération des données de prix…",
+    "exactMinute": "minute exacte",
+    "minutesAway": "~{minutes} min de différence",
+    "hoursAway": "~{hours} h de différence"
+  },
+  "time": {
+    "utc": "UTC"
+  },
+  "faq": {
+    "title": "FaQ",
+    "subtitle": "Questions fréquentes sur le Calculateur de Spread.",
+    "general": { "title": "Questions Générales" },
+    "data": { "title": "Données & Précision" },
+    "q1": { "question": "Qu'est-ce qu'un spread boursier?", "answer": "Un spread boursier est la différence entre le prix que tu as payé pour une action et le prix réel du marché au moment de ta transaction. Cela t'aide à comprendre si tu as fait une bonne affaire ou payé plus que le prix du marché." },
+    "q2": { "question": "Comment fonctionne ce calculateur?", "answer": "Entre les détails de ta transaction incluant l'ISIN, le nombre d'unités, le montant total payé, les frais, et la date/heure exacte de ta transaction. Le calculateur récupère le prix historique du marché depuis Yahoo Finance et le compare à ton prix d'exécution." },
+    "q3": { "question": "Qu'est-ce qu'un ISIN?", "answer": "L'ISIN (International Securities Identification Number) est un code alphanumérique unique de 12 caractères qui identifie un titre spécifique. Tu peux généralement le trouver sur ton relevé de courtier ou en recherchant l'action en ligne." },
+    "q4": { "question": "D'où viennent les données de marché?", "answer": "Le calculateur récupère les données de prix historiques depuis Yahoo Finance, qui fournit des données de marché fiables pour la plupart des titres cotés dans le monde entier." },
+    "q5": { "question": "Pourquoi dois-tu spécifier le fuseau horaire?", "answer": "Les prix des actions changent tout au long de la journée de trading. Spécifier le fuseau horaire garantit que nous récupérons le bon prix du marché pour l'heure exacte de ta transaction, en tenant compte des différentes heures d'ouverture des marchés dans le monde." },
+    "traderepublic": {
+      "title": "Trade Republic",
+      "question": "Comment récupérer ses spreads sur Trade Republic ?",
+      "answer": "Ouvre l'app mobile (la version web ne génère pas de relevés). Appuie sur l'icône de profil (en haut à droite), va dans Relevé > Relevé de portefeuille > Titres. Définis la date à J+1, puis consulte la dernière page pour le nombre de titres. Ensuite, va dans Espèces > Transactions, et trouve le montant de ta transaction.",
+      "data": {
+        "question": "Pourquoi les prix diffèrent-ils du relevé Lang & Schwarz ?",
+        "answer": "Actuellement, les données sont récupérées auprès d'Euronext car Lang & Schwarz ne dispose pas d'une API permettant d'avoir des données de précision au-delà de 48h, ce qui peut légèrement fausser le spread."
+      }
+    }
+  }
+}

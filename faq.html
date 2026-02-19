@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Stock Spread Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <a href="index.html" class="nav-btn" data-i18n="nav.calculator">Calculator</a>
+      <div class="lang-selector">
+        <select id="lang-select">
+          <option value="en" data-i18n="language.en">English</option>
+          <option value="fr" data-i18n="language.fr">French</option>
+        </select>
+      </div>
+    </div>
+    <h1 data-i18n="faq.title">Frequently Asked Questions</h1>
+    <p data-i18n="faq.subtitle">Common questions about the Stock Spread Calculator.</p>
+  </header>
+
+  <div class="cards-container">
+    <div class="card">
+      <p class="card-title" data-i18n="faq.general.title">General Questions</p>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.q1.question">What is a stock spread?</p>
+        <p class="faq-answer" data-i18n="faq.q1.answer">A stock spread is the difference between the price you paid for a stock and the actual market price at the time of your transaction. It helps you understand if you got a good deal or paid more than the market rate.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.q2.question">How does this calculator work?</p>
+        <p class="faq-answer" data-i18n="faq.q2.answer">Enter your transaction details including ISIN, number of units, total amount paid, fees, and the exact date/time of your transaction. The calculator fetches the historical market price from Yahoo Finance and compares it to your execution price.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.q3.question">What is an ISIN?</p>
+        <p class="faq-answer" data-i18n="faq.q3.answer">ISIN (International Securities Identification Number) is a unique 12-character alphanumeric code that identifies a specific security. You can usually find it on your broker's statement or by searching for the stock online.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title" data-i18n="faq.data.title">Data &amp; Accuracy</p>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.q4.question">Where does the market data come from?</p>
+        <p class="faq-answer" data-i18n="faq.q4.answer">The calculator fetches historical price data from Yahoo Finance, which provides reliable market data for most publicly traded securities worldwide.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.q5.question">Why do I need to specify the timezone?</p>
+        <p class="faq-answer" data-i18n="faq.q5.answer">Stock prices change throughout the trading day. Specifying the timezone ensures we fetch the correct market price for the exact time of your transaction, accounting for different market opening hours around the world.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title" data-i18n="faq.traderepublic.title">Trade Republic</p>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.traderepublic.question">How to retrieve your spreads on Trade Republic?</p>
+        <p class="faq-answer" data-i18n="faq.traderepublic.answer"></p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-question" data-i18n="faq.traderepublic.data.question">Why are prices different from the Lang &amp; Schwarz statement?</p>
+        <p class="faq-answer" data-i18n="faq.traderepublic.data.answer"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
