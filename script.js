@@ -82,9 +82,15 @@ function switchLanguage() {
   const currentPath = window.location.pathname;
   localStorage.setItem('langChosen', isEnglish ? 'fr' : 'en');
   
-  // Get the current filename
+  // Get the current filename (handle both /path/to/file.html and /path/to/)
   const pathParts = currentPath.split('/').filter(Boolean);
-  const fileName = pathParts.pop() || 'index.html';
+  let fileName = pathParts.pop() || 'index.html';
+  
+  // If the last part doesn't end with .html, it's a directory
+  if (!fileName.endsWith('.html')) {
+    pathParts.push(fileName);  // Put it back as part of the path
+    fileName = 'index.html';
+  }
   
   if (isEnglish) {
     // We're in /en/ subdirectory, go up one level for French
