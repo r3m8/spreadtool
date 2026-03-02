@@ -1,7 +1,5 @@
 'use strict';
 
-const CORS_PROXY = 'https://corsproxy.io/?url=';
-
 // Detect current language from URL (works with subdirectories like /spreadtool/en/)
 const pathParts = window.location.pathname.split('/').filter(Boolean);
 const isEnglish = pathParts.includes('en');
@@ -106,19 +104,13 @@ function switchLanguage() {
 }
 
 async function apiFetch(url) {
-  try {
-    const r = await fetch(url);
-    if (r.ok) return r.json();
-  } catch (_) {}
-  const r = await fetch(CORS_PROXY + encodeURIComponent(url));
+  const r = await fetch(url);
   if (!r.ok) throw new Error(`API responded with HTTP ${r.status}.`);
   return r.json();
 }
 
 async function resolveTicker(isin) {
-  const url =
-    `https://query2.finance.yahoo.com/v1/finance/search` +
-    `?q=${encodeURIComponent(isin)}&quotesCount=5&newsCount=0`;
+  const url = `/api/yahoo/v1/finance/search?q=${encodeURIComponent(isin)}&quotesCount=5&newsCount=0`;
   const data   = await apiFetch(url);
   const quotes = data?.quotes;
   if (!quotes?.length)
@@ -144,10 +136,7 @@ async function getPriceAt(ticker, dateStr, hourVal, minVal, offsetMinutes) {
   const period1 = txUnix - 120;
   const period2 = txUnix + 180;
 
-  const url =
-    `https://query2.finance.yahoo.com/v8/finance/chart/` +
-    `${encodeURIComponent(ticker)}` +
-    `?period1=${period1}&period2=${period2}&interval=1m`;
+  const url = `/api/yahoo/v8/finance/chart/${encodeURIComponent(ticker)}?period1=${period1}&period2=${period2}&interval=1m`;
 
   const data   = await apiFetch(url);
   const result = data?.chart?.result?.[0];
