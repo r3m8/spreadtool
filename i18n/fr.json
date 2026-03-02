@@ -3,9 +3,9 @@
     "name": "Français",
     "code": "fr"
   },
-  "title": "Calculateur de Spread",
+  "title": "Calculateur de spread",
   "header": {
-    "title": "Calculateur de Spread",
+    "title": "Calculateur de spread",
     "subtitle": "Compare ton prix d'exécution avec les données de marché."
   },
   "nav": {
@@ -37,9 +37,8 @@
     },
     "datetime": {
       "label": "Date, heure et fuseau horaire de la transaction"
-    },
-    "hourPlaceholder": "hh",
-    "minutePlaceholder": "mm"
+    }
+
   },
   "buttons": {
     "calculate": "Calculer le spread"
@@ -72,8 +71,7 @@
     "totalPaidInvalid": "Saisis un montant total valide.",
     "feesNegative": "Les frais ne peuvent pas être négatifs.",
     "dateRequired": "Saisis une date de transaction.",
-    "hourInvalid": "Saisis une heure valide (0–23).",
-    "minuteInvalid": "Saisis une minute valide (0–59).",
+    "timeInvalid": "Saisis une heure valide.",
     "tickerNotFound": "Aucun ticker trouvé pour l'ISIN \"{isin}\". Vérifie ta saisie.",
     "noChartData": "Aucune donnée de graphique retournée. Le marché était peut-être fermé à ce moment-là.",
     "noBars": "Aucune barre 1 minute dans cette fenêtre. Le marché était peut-être fermé ou l'heure en dehors des heures de trading.",
@@ -92,8 +90,8 @@
     "utc": "UTC"
   },
   "faq": {
-    "title": "FaQ",
-    "subtitle": "Questions fréquentes sur le Calculateur de Spread.",
+    "title": "FAQ",
+    "subtitle": "Questions fréquentes sur le calculateur de Spread.",
     "general": { "title": "Questions Générales" },
     "data": { "title": "Données & Précision" },
     "q1": { "question": "Qu'est-ce qu'un spread boursier?", "answer": "Un spread boursier est la différence entre le prix que tu as payé pour une action et le prix réel du marché au moment de ta transaction. Cela t'aide à comprendre si tu as fait une bonne affaire ou payé plus que le prix du marché." },
@@ -105,7 +103,7 @@
     "traderepublic": {
       "title": "Trade Republic",
       "question": "Comment récupérer ses spreads sur Trade Republic ?",
-      "answer": "Ouvre l'app mobile (la version web ne génère pas de relevés). Appuie sur l'icône de profil (en haut à droite), va dans Relevé > Relevé de portefeuille > Titres. Définis la date à J+1, puis consulte la dernière page pour le nombre de titres. Ensuite, va dans Espèces > Transactions, et trouve le montant de ta transaction.",
+      "answer": "<ul class='faq-steps'><li>Dans l'application mobile, rends-toi dans <strong>Épargne</strong></li><li>Sélectionne ton enveloppe (<strong>PEA</strong> ou <strong>CTO</strong>)</li><li>Clique sur la catégorie <strong>Plan d'épargne</strong></li><li>Sélectionne l'actif concerné</li><li>Sélectionne une transaction dans la liste des transactions</li><li>Tu pourras accéder directement à :<ul class='faq-details'><li>La date d'exécution</li><li>L'heure d'exécution (<em>attention : l'heure indiquée dans le relevé des transactions dans l'onglet \"Espèces\" est différente et ne correspond pas à l'heure d'exécution</em>)</li><li>Le nombre de titres</li><li>Le prix du titre</li><li>Les frais</li><li>Le total payé</li></ul></li></ul>",
       "data": {
         "question": "Pourquoi les prix diffèrent-ils du relevé Lang & Schwarz ?",
         "answer": "Actuellement, les données sont récupérées auprès d'Euronext car Lang & Schwarz ne dispose pas d'une API permettant d'avoir des données de précision au-delà de 48h, ce qui peut légèrement fausser le spread."

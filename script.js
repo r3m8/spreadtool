@@ -3,19 +3,19 @@
 const CORS_PROXY = 'https://corsproxy.io/?url=';
 
 const i18n = {
-  currentLang: 'en',
+  currentLang: 'fr',
   translations: {},
   availableLangs: ['en', 'fr'],
 
   async init() {
-    const browserLang = navigator.language?.split('-')[0] || 'en';
+    const browserLang = navigator.language?.split('-')[0] || 'fr';
     const savedLang = localStorage.getItem('preferred-lang');
-    const lang = savedLang || (this.availableLangs.includes(browserLang) ? browserLang : 'en');
+    const lang = savedLang || (this.availableLangs.includes(browserLang) ? browserLang : 'fr');
     await this.load(lang);
   },
 
   async load(lang) {
-    if (!this.availableLangs.includes(lang)) lang = 'en';
+    if (!this.availableLangs.includes(lang)) lang = 'fr';
 
     try {
       const response = await fetch(`i18n/${lang}.json`);
@@ -48,6 +48,10 @@ const i18n = {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       el.textContent = this.t(key);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      el.innerHTML = this.t(key);
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
@@ -218,6 +222,16 @@ function setSpread(spread, spreadPct, currency) {
 const HISTORY_KEY = 'spread-calculator-history';
 const MAX_HISTORY = 100;
 
+function initFAQ() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (faqItems.length === 0) return;
+  faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+}
+
 const historyManager = {
   entries: [],
 
@@ -268,6 +282,8 @@ const historyManager = {
     const listEl = document.getElementById('history-list');
     const emptyEl = document.getElementById('history-empty');
     const avgEl = document.getElementById('avg-spread');
+
+    if (!listEl || !emptyEl || !avgEl) return;
 
     if (this.entries.length === 0) {
       listEl.classList.add('hidden');
@@ -322,6 +338,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   historyManager.load();
+  initFAQ();
 
   document.getElementById('clear-history')?.addEventListener('click', () => {
     if (historyManager.entries.length > 0 && confirm(i18n.t('history.confirmClear'))) {
@@ -351,8 +368,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const totalPaid     = parseFloat(document.getElementById('total-paid').value);
     const fees          = parseFloat(document.getElementById('fees').value) || 0;
     const dateStr       = document.getElementById('tx-date').value;
-    const hourVal       = parseInt(document.getElementById('tx-hour').value, 10);
-    const minVal        = parseInt(document.getElementById('tx-min').value,  10);
+    const timeVal       = document.getElementById('tx-time').value;
+    const [hourVal, minVal] = timeVal ? timeVal.split(':').map(Number) : [NaN, NaN];
     const offsetMinutes = parseInt(document.getElementById('tz-offset').value, 10);
 
     if (!isin)                          return setStatus(i18n.t('errors.isinRequired'), true);
@@ -360,10 +377,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!totalPaid || totalPaid <= 0)   return setStatus(i18n.t('errors.totalPaidInvalid'), true);
     if (fees < 0)                       return setStatus(i18n.t('errors.feesNegative'), true);
     if (!dateStr)                       return setStatus(i18n.t('errors.dateRequired'), true);
-    if (isNaN(hourVal) || hourVal < 0 || hourVal > 23)
-                                        return setStatus(i18n.t('errors.hourInvalid'), true);
-    if (isNaN(minVal)  || minVal  < 0 || minVal  > 59)
-                                        return setStatus(i18n.t('errors.minuteInvalid'), true);
+    if (!timeVal || isNaN(hourVal) || isNaN(minVal))
+                                        return setStatus(i18n.t('errors.timeInvalid'), true);
 
     btn.disabled = true;
     resultsCard.classList.add('hidden');

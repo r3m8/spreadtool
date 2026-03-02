@@ -37,9 +37,8 @@
     },
     "datetime": {
       "label": "Transaction date, time & timezone"
-    },
-    "hourPlaceholder": "HH",
-    "minutePlaceholder": "MM"
+    }
+
   },
   "buttons": {
     "calculate": "Calculate spread"
@@ -72,8 +71,7 @@
     "totalPaidInvalid": "Please enter a valid total paid.",
     "feesNegative": "Fees cannot be negative.",
     "dateRequired": "Please enter a transaction date.",
-    "hourInvalid": "Please enter a valid hour (0–23).",
-    "minuteInvalid": "Please enter a valid minute (0–59).",
+    "timeInvalid": "Please enter a valid time.",
     "tickerNotFound": "No ticker found for ISIN \"{isin}\". Check your input.",
     "noChartData": "No chart data returned. The market may have been closed at that time.",
     "noBars": "No 1-minute bars in this window. The market may have been closed or the time is outside trading hours.",
@@ -105,7 +103,7 @@
     "traderepublic": {
       "title": "Trade Republic",
       "question": "How to retrieve your spreads on Trade Republic?",
-      "answer": "Open the mobile app (desktop version doesn't support statements). Tap your profile icon (top right), go to Statement > Portfolio Statement > Securities. Set date to D+1, then check the last page for share count. Next, go to Cash > Transactions, find your transaction amount, and subtract €1 if not a scheduled plan.",
+      "answer": "In the mobile app, go to Savings, select your account type (PEA or CTO), click on the \"Savings Plan\" category, select the relevant asset, and then select a transaction from the transaction list. You will be able to directly access the execution date, time (note: the time shown in the transaction statement in the \"Cash\" tab is different and does not match the execution time), number of shares, share price, fees and total paid.",
       "data": {
         "question": "Why are prices different from the Lang & Schwarz statement?",
         "answer": "Currently, data is retrieved from Euronext because Lang & Schwarz does not have an API that allows high-precision data beyond 48 hours, which can slightly skew the spread."
