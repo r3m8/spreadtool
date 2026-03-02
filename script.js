@@ -2,8 +2,9 @@
 
 const CORS_PROXY = 'https://corsproxy.io/?url=';
 
-// Detect current language from URL
-const isEnglish = window.location.pathname.startsWith('/en');
+// Detect current language from URL (works with subdirectories like /spreadtool/en/)
+const pathParts = window.location.pathname.split('/').filter(Boolean);
+const isEnglish = pathParts.includes('en');
 const currentLang = isEnglish ? 'en' : 'fr';
 
 // On first visit to root (French site), redirect based on browser preference
@@ -12,7 +13,9 @@ if (!isEnglish && !localStorage.getItem('langChosen')) {
   if (browserLang && browserLang.startsWith('en')) {
     localStorage.setItem('langChosen', 'en');
     const currentPath = window.location.pathname;
-    window.location.replace('/en' + currentPath);
+    const basePath = currentPath.replace(/\/[^\/]*$/, '');
+    const fileName = currentPath.split('/').pop() || 'index.html';
+    window.location.replace(`${basePath}/en/${fileName}`);
   }
 }
 
@@ -29,8 +32,9 @@ const i18n = {
     if (!this.availableLangs.includes(lang)) lang = 'fr';
 
     try {
-      // Use absolute path so it works from /en/ subdirectory too
-      const response = await fetch(`/i18n/${lang}.json`);
+      // Use relative path based on current location
+      const basePath = isEnglish ? '../' : './';
+      const response = await fetch(`${basePath}i18n/${lang}.json`);
       this.translations = await response.json();
     } catch (e) {
       console.error('Failed to load translations:', e);
@@ -78,13 +82,16 @@ function switchLanguage() {
   const currentPath = window.location.pathname;
   localStorage.setItem('langChosen', isEnglish ? 'fr' : 'en');
   
+  // Get the current filename
+  const pathParts = currentPath.split('/').filter(Boolean);
+  const fileName = pathParts.pop() || 'index.html';
+  
   if (isEnglish) {
-    // Strip /en prefix to go back to French root
-    const frenchPath = currentPath.replace(/^\/en/, '') || '/';
-    window.location.href = frenchPath;
+    // We're in /en/ subdirectory, go up one level for French
+    window.location.href = `../${fileName}`;
   } else {
-    // Navigate to /en equivalent
-    window.location.href = '/en' + currentPath;
+    // We're in root, go to /en/ subdirectory
+    window.location.href = `./en/${fileName}`;
   }
 }
 
