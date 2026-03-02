@@ -946,6 +946,73 @@ button:disabled {
   }
 }
 
+/* Site Footer */
+.site-footer {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.github-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.github-link:hover {
+  color: var(--accent);
+  background: rgba(217, 119, 87, 0.1);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+/* Header GitHub Link */
+.header-github-link {
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.header-github-link svg {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #141413;
@@ -1003,5 +1070,17 @@ button:disabled {
 
   .nav-brand:hover {
     background: rgba(217, 119, 87, 0.1);
+  }
+
+  .github-link:hover {
+    background: rgba(217, 119, 87, 0.1);
+  }
+
+  .header-github-link:hover {
+    color: var(--accent);
+  }
+
+  .header-github-link svg {
+    stroke: currentColor;
   }
 }
