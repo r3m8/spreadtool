@@ -2,23 +2,35 @@
 
 const CORS_PROXY = 'https://corsproxy.io/?url=';
 
+// Detect current language from URL
+const isEnglish = window.location.pathname.startsWith('/en');
+const currentLang = isEnglish ? 'en' : 'fr';
+
+// On first visit to root (French site), redirect based on browser preference
+if (!isEnglish && !localStorage.getItem('langChosen')) {
+  const browserLang = navigator.language || navigator.userLanguage;
+  if (browserLang && browserLang.startsWith('en')) {
+    localStorage.setItem('langChosen', 'en');
+    const currentPath = window.location.pathname;
+    window.location.replace('/en' + currentPath);
+  }
+}
+
 const i18n = {
-  currentLang: 'fr',
+  currentLang: currentLang,
   translations: {},
   availableLangs: ['en', 'fr'],
 
   async init() {
-    const browserLang = navigator.language?.split('-')[0] || 'fr';
-    const savedLang = localStorage.getItem('preferred-lang');
-    const lang = savedLang || (this.availableLangs.includes(browserLang) ? browserLang : 'fr');
-    await this.load(lang);
+    await this.load(currentLang);
   },
 
   async load(lang) {
     if (!this.availableLangs.includes(lang)) lang = 'fr';
 
     try {
-      const response = await fetch(`i18n/${lang}.json`);
+      // Use absolute path so it works from /en/ subdirectory too
+      const response = await fetch(`/i18n/${lang}.json`);
       this.translations = await response.json();
     } catch (e) {
       console.error('Failed to load translations:', e);
@@ -26,8 +38,6 @@ const i18n = {
     }
 
     this.currentLang = lang;
-    localStorage.setItem('preferred-lang', lang);
-    this.updateDOM();
     document.documentElement.lang = lang;
   },
 
@@ -62,6 +72,21 @@ const i18n = {
     if (langSelect) langSelect.value = this.currentLang;
   }
 };
+
+// Language switcher - navigate to the other language version
+function switchLanguage() {
+  const currentPath = window.location.pathname;
+  localStorage.setItem('langChosen', isEnglish ? 'fr' : 'en');
+  
+  if (isEnglish) {
+    // Strip /en prefix to go back to French root
+    const frenchPath = currentPath.replace(/^\/en/, '') || '/';
+    window.location.href = frenchPath;
+  } else {
+    // Navigate to /en equivalent
+    window.location.href = '/en' + currentPath;
+  }
+}
 
 async function apiFetch(url) {
   try {
@@ -332,9 +357,10 @@ const historyManager = {
 document.addEventListener('DOMContentLoaded', async () => {
   await i18n.init();
 
+  // Set up language switcher
   const langSelect = document.getElementById('lang-select');
-  langSelect?.addEventListener('change', (e) => {
-    i18n.load(e.target.value);
+  langSelect?.addEventListener('change', () => {
+    switchLanguage();
   });
 
   historyManager.load();

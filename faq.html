@@ -3,13 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ - Stock Spread Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Questions fréquentes sur le calculateur de spread boursier. Comprendre le spread, l'ISIN, les données de marché et Trade Republic." />
+  <meta name="keywords" content="FAQ, spread, bourse, ISIN, Trade Republic, calculatrice, questions" />
+  <meta name="author" content="spreadtool.eu" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="FAQ - Calculateur de spread" />
+  <meta property="og:description" content="Questions fréquentes sur le calculateur de spread boursier et Trade Republic." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://spreadtool.eu/faq.html" />
+  <meta property="og:site_name" content="spreadtool.eu" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="FAQ - Calculateur de spread" />
+  <meta name="twitter:description" content="Questions fréquentes sur le calculateur de spread boursier." />
+  <link rel="canonical" href="https://spreadtool.eu/faq.html" />
+  <link rel="alternate" hreflang="fr" href="https://spreadtool.eu/faq.html" />
+  <link rel="alternate" hreflang="en" href="https://spreadtool.eu/en/faq.html" />
+  <link rel="alternate" hreflang="x-default" href="https://spreadtool.eu/faq.html" />
+  <link rel="stylesheet" href="/style.css" />
+  <title>FAQ - Calculateur de spread</title>
 </head>
 <body>
 
   <nav class="main-nav">
-    <a href="index.html" class="nav-brand">
+    <a href="/" class="nav-brand">
       <svg class="nav-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M3 3v18h18"/>
         <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
@@ -17,12 +33,12 @@
       <span class="nav-brand-text">spreadtool.eu</span>
     </a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">
+      <a href="/" class="nav-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="4" y="2" width="16" height="20" rx="2"/>
           <path d="M8 6h8M8 10h8M8 14h5M8 18h3"/>
         </svg>
-        <span data-i18n="nav.calculator">Calculator</span>
+        <span>Calculateur</span>
       </a>
       <a href="faq.html" class="nav-link active">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -30,76 +46,76 @@
           <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
           <path d="M12 17h.01"/>
         </svg>
-        <span data-i18n="nav.faq">FAQ</span>
+        <span>FAQ</span>
       </a>
       <div class="lang-selector">
         <select id="lang-select">
-          <option value="fr" data-i18n="language.fr">Français</option>
-          <option value="en" data-i18n="language.en">English</option>
+          <option value="fr">Français</option>
+          <option value="en">English</option>
         </select>
       </div>
     </div>
   </nav>
 
   <header>
-    <h1><svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span data-i18n="faq.title">Frequently Asked Questions</span></h1>
-    <p data-i18n="faq.subtitle">Common questions about the Stock Spread Calculator.</p>
+    <h1><svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>FAQ</span></h1>
+    <p>Questions fréquentes sur le calculateur de Spread.</p>
   </header>
 
   <div class="faq-container">
     <div class="card">
-      <p class="card-title" data-i18n="faq.general.title">General Questions</p>
+      <p class="card-title">Questions Générales</p>
 
       <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.q1.question">What is a stock spread?</p>
-        <p class="faq-answer" data-i18n="faq.q1.answer">A stock spread is the difference between the price you paid for a stock and the actual market price at the time of your transaction. It helps you understand if you got a good deal or paid more than the market rate.</p>
+        <p class="faq-question">Qu'est-ce qu'un spread boursier?</p>
+        <p class="faq-answer">Un spread boursier est la différence entre le prix que tu as payé pour une action et le prix réel du marché au moment de ta transaction. Cela t'aide à comprendre si tu as fait une bonne affaire ou payé plus que le prix du marché.</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.q2.question">How does this calculator work?</p>
-        <p class="faq-answer" data-i18n="faq.q2.answer">Enter your transaction details including ISIN, number of units, total amount paid, fees, and the exact date/time of your transaction. The calculator fetches the historical market price from Yahoo Finance and compares it to your execution price.</p>
+        <p class="faq-question">Comment fonctionne ce calculateur?</p>
+        <p class="faq-answer">Entre les détails de ta transaction incluant l'ISIN, le nombre d'unités, le montant total payé, les frais, et la date/heure exacte de ta transaction. Le calculateur récupère le prix historique du marché depuis Yahoo Finance et le compare à ton prix d'exécution.</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.q3.question">What is an ISIN?</p>
-        <p class="faq-answer" data-i18n="faq.q3.answer">ISIN (International Securities Identification Number) is a unique 12-character alphanumeric code that identifies a specific security. You can usually find it on your broker's statement or by searching for the stock online.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <p class="card-title" data-i18n="faq.data.title">Data &amp; Accuracy</p>
-
-      <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.q4.question">Where does the market data come from?</p>
-        <p class="faq-answer" data-i18n="faq.q4.answer">The calculator fetches historical price data from Yahoo Finance, which provides reliable market data for most publicly traded securities worldwide.</p>
-      </div>
-
-      <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.q5.question">Why do I need to specify the timezone?</p>
-        <p class="faq-answer" data-i18n="faq.q5.answer">Stock prices change throughout the trading day. Specifying the timezone ensures we fetch the correct market price for the exact time of your transaction, accounting for different market opening hours around the world.</p>
-      </div>
-
-      <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.q6.question">How is the spread calculated?</p>
-        <p class="faq-answer" data-i18n="faq.q6.answer">The spread is calculated using the typical price formula (high+low+close)/3 for more accurate results. Due to Yahoo Finance API restrictions, we can only fetch 8 days of 1-minute granularity data per request, which limits historical accuracy beyond this timeframe.</p>
+        <p class="faq-question">Qu'est-ce qu'un ISIN?</p>
+        <p class="faq-answer">L'ISIN (International Securities Identification Number) est un code alphanumérique unique de 12 caractères qui identifie un titre spécifique. Tu peux généralement le trouver sur ton relevé de courtier ou en recherchant l'action en ligne.</p>
       </div>
     </div>
 
     <div class="card">
-      <p class="card-title" data-i18n="faq.traderepublic.title">Trade Republic</p>
+      <p class="card-title">Données & Précision</p>
 
       <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.traderepublic.question">How to retrieve your spreads on Trade Republic?</p>
-        <p class="faq-answer" data-i18n-html="faq.traderepublic.answer"></p>
+        <p class="faq-question">D'où viennent les données de marché?</p>
+        <p class="faq-answer">Le calculateur récupère les données de prix historiques depuis Yahoo Finance, qui fournit des données de marché fiables pour la plupart des titres cotés dans le monde entier.</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-question" data-i18n="faq.traderepublic.data.question">Why are prices different from the Lang &amp; Schwarz statement?</p>
-        <p class="faq-answer" data-i18n="faq.traderepublic.data.answer"></p>
+        <p class="faq-question">Pourquoi dois-tu spécifier le fuseau horaire?</p>
+        <p class="faq-answer">Les prix des actions changent tout au long de la journée de trading. Spécifier le fuseau horaire garantit que nous récupérons le bon prix du marché pour l'heure exacte de ta transaction, en tenant compte des différentes heures d'ouverture des marchés dans le monde.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-question">Comment est calculé le spread?</p>
+        <p class="faq-answer">Le spread est calculé à l'aide de la formule du prix typique (haut+bas+clôture)/3 pour des résultats plus précis. En raison des restrictions de l'API Yahoo Finance, nous ne pouvons récupérer que 8 jours de données à granularité 1 minute par requête, ce qui limite la précision historique au-delà de cette période.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Trade Republic</p>
+
+      <div class="faq-item">
+        <p class="faq-question">Comment récupérer ses spreads sur Trade Republic ?</p>
+        <p class="faq-answer"><ul class='faq-steps'><li>Dans l'application mobile, rends-toi dans <strong>Épargne</strong></li><li>Sélectionne ton enveloppe (<strong>PEA</strong> ou <strong>CTO</strong>)</li><li>Clique sur la catégorie <strong>Plan d'épargne</strong></li><li>Sélectionne l'actif concerné</li><li>Sélectionne une transaction dans la liste des transactions</li><li>Tu pourras accéder directement à :<ul class='faq-details'><li>La date d'exécution</li><li>L'heure d'exécution (<em>attention : l'heure indiquée dans le relevé des transactions dans l'onglet "Espèces" est différente et ne correspond pas à l'heure d'exécution</em>)</li><li>Le nombre de titres</li><li>Le prix du titre</li><li>Les frais</li><li>Le total payé</li></ul></li></ul></p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-question">Pourquoi les prix diffèrent-ils du relevé Lang & Schwarz ?</p>
+        <p class="faq-answer">Actuellement, les données sont récupérées auprès d'Euronext car Lang & Schwarz ne dispose pas d'une API permettant d'avoir des données de précision au-delà de 48h, ce qui peut légèrement fausser le spread.</p>
       </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>

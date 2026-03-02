@@ -1,0 +1,27 @@
+# spreadtool.eu
+
+> Calculateur de spread boursier gratuit. Comparez le prix d'exécution de vos transactions boursières avec les données de marché en temps réel de Yahoo Finance. Compatible avec Trade Republic et autres courtiers.
+
+Ce site permet aux investisseurs d'analyser la qualité d'exécution de leurs transactions boursières en calculant l'écart (spread) entre le prix payé et le prix du marché au moment de la transaction.
+
+Fonctionnalités principales:
+
+- Calcul du spread par ISIN avec données historiques Yahoo Finance
+- Analyse des frais et commissions
+- Historique des calculs avec moyenne des spreads
+- Support multilingue (français et anglais)
+- Interface simple et rapide
+
+## Pages principales
+
+- [Calculateur de spread](https://spreadtool.eu/index.html.md): Page principale pour calculer vos spreads boursiers
+- [FAQ](https://spreadtool.eu/faq.html.md): Questions fréquentes sur l'utilisation du calculateur
+
+## Documentation
+
+- [Guide d'utilisation Trade Republic](https://spreadtool.eu/faq.html.md#traderepublic): Comment récupérer vos spreads sur Trade Republic
+- [Explications sur le calcul du spread](https://spreadtool.eu/faq.html.md): Méthodologie de calcul et sources de données
+
+## Optional
+
+- [Informations sur les données de marché](https://spreadtool.eu/faq.html.md#data): Détails sur Yahoo Finance et les fuseaux horaires
