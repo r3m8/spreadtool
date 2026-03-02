@@ -26,6 +26,7 @@ const i18n = {
 
   async init() {
     await this.load(currentLang);
+    this.updateDOM();
   },
 
   async load(lang) {
@@ -92,12 +93,15 @@ function switchLanguage() {
     fileName = 'index.html';
   }
   
+  // Use clean URLs: no "index.html" for home page
+  const filePath = fileName === 'index.html' ? '' : fileName;
+  
   if (isEnglish) {
     // We're in /en/ subdirectory, go up one level for French
-    window.location.href = `../${fileName}`;
+    window.location.href = `../${filePath}`;
   } else {
     // We're in root, go to /en/ subdirectory
-    window.location.href = `./en/${fileName}`;
+    window.location.href = `./en/${filePath}`;
   }
 }
 
