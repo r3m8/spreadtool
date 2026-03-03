@@ -30,4 +30,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://spreadtool.eu/faq.html"/>
   </url>
 
+  <url>
+    <loc>https://spreadtool.eu/legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spreadtool.eu/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spreadtool.eu/en/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spreadtool.eu/legal.html"/>
+  </url>
+
+  <url>
+    <loc>https://spreadtool.eu/en/legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://spreadtool.eu/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spreadtool.eu/en/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spreadtool.eu/legal.html"/>
+  </url>
+
 </urlset>

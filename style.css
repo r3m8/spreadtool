@@ -300,6 +300,67 @@ header p {
   margin-bottom: 0;
 }
 
+.legal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.legal-container > .card {
+  margin-bottom: 0;
+}
+
+.legal-section {
+  margin-bottom: 1.5rem;
+}
+
+.legal-section:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-size: 1.0625rem;
+}
+
+.legal-section-desc {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  color: var(--text);
+  font-size: 1.0625rem;
+}
+
+.legal-section-desc:last-child {
+  margin-bottom: 0;
+}
+
+.legal-meta {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+  color: var(--text);
+  font-size: 1.0625rem;
+}
+
+.legal-meta:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section a,
+.legal-meta a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.legal-section a:hover,
+.legal-meta a:hover {
+  text-decoration: underline;
+}
+
 .results-wrapper {
   display: grid;
   grid-template-areas: "results";
@@ -986,6 +1047,28 @@ button:disabled {
   box-shadow: var(--shadow);
 }
 
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-legal {
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.footer-legal:hover {
+  color: var(--accent);
+}
+
 /* Header GitHub Link */
 .header-github-link {
   display: inline;
@@ -1010,6 +1093,11 @@ button:disabled {
   .site-footer {
     margin-top: 2rem;
     padding: 1rem;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }
 
