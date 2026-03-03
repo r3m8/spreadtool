@@ -1,6 +1,6 @@
 'use strict';
 
-const CORS_PROXY = 'https://corsproxy.io/?reqHeaders=origin:&url=';
+const CORS_PROXY = 'https://spreadtool.r3m8.workers.dev/?url=';
 
 // Detect current language from URL (works with subdirectories like /spreadtool/en/)
 const pathParts = window.location.pathname.split('/').filter(Boolean);
@@ -106,10 +106,6 @@ function switchLanguage() {
 }
 
 async function apiFetch(url) {
-  try {
-    const r = await fetch(url);
-    if (r.ok) return r.json();
-  } catch (_) {}
   const r = await fetch(CORS_PROXY + encodeURIComponent(url));
   if (!r.ok) throw new Error(`API responded with HTTP ${r.status}.`);
   return r.json();
