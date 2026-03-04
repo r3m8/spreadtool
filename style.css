@@ -826,8 +826,7 @@ button:disabled {
 .history-card {
   margin-top: 2rem;
   max-width: 1000px;
-  width: auto;
-  min-width: 400px;
+  width: 100%;
 }
 
 .history-header {
@@ -895,6 +894,10 @@ button:disabled {
 }
 
 .history-empty.hidden {
+  display: none;
+}
+
+.history-list.hidden {
   display: none;
 }
 
