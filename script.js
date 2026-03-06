@@ -72,7 +72,6 @@ const i18n = {
       const key = el.getAttribute('data-i18n-placeholder');
       el.placeholder = this.t(key);
     });
-    document.title = this.t('title');
     const langSelect = document.getElementById('lang-select');
     if (langSelect) langSelect.value = this.currentLang;
   }
