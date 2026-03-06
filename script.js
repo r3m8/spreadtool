@@ -106,7 +106,12 @@ function switchLanguage() {
 
 async function apiFetch(url) {
   const r = await fetch(CORS_PROXY + encodeURIComponent(url));
-  if (!r.ok) throw new Error(`API responded with HTTP ${r.status}.`);
+  if (!r.ok) {
+    if (r.status === 422) {
+      throw new Error(i18n.t('errors.yahoo30DayLimit'));
+    }
+    throw new Error(`API responded with HTTP ${r.status}.`);
+  }
   return r.json();
 }
 
@@ -217,7 +222,12 @@ function fmtBarTime(utcDate, offsetMinutes) {
 
 function setStatus(msg, isError = false) {
   const el = document.getElementById('status');
-  el.textContent = msg;
+  if (isError) {
+    const prefix = i18n.t('status.error') || 'Error:';
+    el.textContent = `${prefix} ${msg}`;
+  } else {
+    el.textContent = msg;
+  }
   el.className   = isError ? 'error' : '';
 }
 

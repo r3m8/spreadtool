@@ -36,7 +36,8 @@
       "placeholder": "e.g. 1.50"
     },
     "datetime": {
-      "label": "Transaction date, time & timezone"
+      "label": "Transaction date, time & timezone",
+      "hint": "Date must be within the last 30 days."
     }
 
   },
@@ -77,9 +78,11 @@
     "noBars": "No 1-minute bars in this window. The market may have been closed or the time is outside trading hours.",
     "nullCloses": "All price bars in this window have null closes. Try a time during market hours.",
     "farBar": "Nearest bar is {minutes} min away from your transaction time. Market may have been closed or illiquid at that time.",
+    "yahoo30DayLimit": "The requested range must be within the last 30 days.",
     "unexpected": "An unexpected error occurred."
   },
   "status": {
+    "error": "Error:",
     "resolving": "🔍 Resolving ticker from ISIN…",
     "fetching": "✓ {ticker}{name} · Fetching price data…",
     "exactMinute": "exact minute",
@@ -94,6 +97,7 @@
     "subtitle": "Common questions about the Stock Spread Calculator.",
     "general": { "title": "General Questions" },
     "data": { "title": "Data & Accuracy" },
+    "limitations": { "title": "Limitations" },
     "q1": { "question": "What is a stock spread?", "answer": "A stock spread is the difference between the price you paid for a stock and the actual market price at the time of your transaction. It helps you understand if you got a good deal or paid more than the market rate." },
     "q2": { "question": "How does this calculator work?", "answer": "Enter your transaction details including ISIN, number of units, total amount paid, fees, and the exact date/time of your transaction. The calculator fetches the historical market price from Yahoo Finance and compares it to your execution price." },
     "q3": { "question": "What is an ISIN?", "answer": "ISIN (International Securities Identification Number) is a unique 12-character alphanumeric code that identifies a specific security. You can usually find it on your broker's statement or by searching for the stock online." },
@@ -108,6 +112,14 @@
         "question": "Why are prices different from the Lang & Schwarz statement?",
         "answer": "Currently, data is retrieved from Euronext because Lang & Schwarz does not have an API that allows high-precision data beyond 48 hours, which can slightly skew the spread."
       }
+    },
+    "limitation1": {
+      "question": "Why must the transaction date be within the last 30 days?",
+      "answer": "The Yahoo Finance API imposes a strict restriction: only data from the last 30 days is accessible with 1-minute granularity. Beyond this period, the API returns a 422 error and the calculation cannot be performed. This limitation is specific to Yahoo Finance and cannot be bypassed."
+    },
+    "limitation2": {
+      "question": "Can I calculate the spread for older transactions?",
+      "answer": "No, it is not possible to calculate the spread for transactions older than 30 days with this tool. If you need to analyze older transactions, you will need to use other historical data sources or check your broker statement directly, which may contain spread information provided by your trading platform."
     }
   }
 }

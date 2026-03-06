@@ -36,7 +36,8 @@
       "placeholder": "1.50"
     },
     "datetime": {
-      "label": "Date, heure et fuseau horaire de la transaction"
+      "label": "Date, heure et fuseau horaire de la transaction",
+      "hint": "La date doit être comprise dans les 30 derniers jours."
     }
 
   },
@@ -77,9 +78,11 @@
     "noBars": "Aucune barre 1 minute dans cette fenêtre. Le marché était peut-être fermé ou l'heure en dehors des heures de trading.",
     "nullCloses": "Toutes les barres de prix dans cette fenêtre ont des clôtures nulles. Essayez une heure pendant les heures de marché.",
     "farBar": "La barre la plus proche est à {minutes} min de ton heure de transaction. Le marché était peut-être fermé ou illiquide à ce moment-là.",
+    "yahoo30DayLimit": "La plage demandée doit être dans les 30 derniers jours.",
     "unexpected": "Une erreur inattendue s'est produite."
   },
   "status": {
+    "error": "Erreur :",
     "resolving": "🔍 Résolution du ticker depuis l'ISIN…",
     "fetching": "✓ {ticker}{name} · Récupération des données de prix…",
     "exactMinute": "minute exacte",
@@ -94,6 +97,7 @@
     "subtitle": "Questions fréquentes sur le calculateur de Spread.",
     "general": { "title": "Questions Générales" },
     "data": { "title": "Données & Précision" },
+    "limitations": { "title": "Limitations" },
     "q1": { "question": "Qu'est-ce qu'un spread boursier?", "answer": "Un spread boursier est la différence entre le prix que tu as payé pour une action et le prix réel du marché au moment de ta transaction. Cela t'aide à comprendre si tu as fait une bonne affaire ou payé plus que le prix du marché." },
     "q2": { "question": "Comment fonctionne ce calculateur?", "answer": "Entre les détails de ta transaction incluant l'ISIN, le nombre d'unités, le montant total payé, les frais, et la date/heure exacte de ta transaction. Le calculateur récupère le prix historique du marché depuis Yahoo Finance et le compare à ton prix d'exécution." },
     "q3": { "question": "Qu'est-ce qu'un ISIN?", "answer": "L'ISIN (International Securities Identification Number) est un code alphanumérique unique de 12 caractères qui identifie un titre spécifique. Tu peux généralement le trouver sur ton relevé de courtier ou en recherchant l'action en ligne." },
@@ -108,6 +112,14 @@
         "question": "Pourquoi les prix diffèrent-ils du relevé Lang & Schwarz ?",
         "answer": "Actuellement, les données sont récupérées auprès d'Euronext car Lang & Schwarz ne dispose pas d'une API permettant d'avoir des données de précision au-delà de 48h, ce qui peut légèrement fausser le spread."
       }
+    },
+    "limitation1": {
+      "question": "Pourquoi la date de la transaction doit-elle être dans les 30 derniers jours ?",
+      "answer": "L'API Yahoo Finance impose une restriction stricte : seules les données des 30 derniers jours sont accessibles avec une granularité de 1 minute. Au-delà de cette période, l'API retourne une erreur 422 et le calcul ne peut pas être effectué. Cette limitation est propre à Yahoo Finance et ne peut pas être contournée."
+    },
+    "limitation2": {
+      "question": "Puis-je calculer le spread pour des transactions plus anciennes ?",
+      "answer": "Non, il n'est pas possible de calculer le spread pour des transactions datant de plus de 30 jours avec cet outil. Si vous avez besoin d'analyser d'anciennes transactions, vous devrez utiliser d'autres sources de données historiques ou consulter directement votre relevé de courtier qui peut contenir les informations de spread fournies par votre plateforme de trading."
     }
   }
 }

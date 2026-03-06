@@ -39,8 +39,8 @@
   /* Semantic colors - Brand aligned */
   --positive: #788c5d;
   --positive-bg: rgba(120, 140, 93, 0.1);
-  --negative: #dc2626;
-  --negative-bg: rgba(220, 38, 38, 0.1);
+  --negative: #c45c4a;
+  --negative-bg: rgba(196, 92, 74, 0.1);
   --warning: #d97757;
   --warning-bg: rgba(217, 119, 87, 0.1);
   
@@ -818,8 +818,39 @@ button:disabled {
   min-height: 1.2em;
 }
 
-#status.error   { color: var(--negative); }
-#status.success { color: var(--positive); }
+#status.error {
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--negative);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+#status.success {
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--positive);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.field-hint {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
 
 .status-info { color: var(--text-secondary); }
 
@@ -1129,8 +1160,8 @@ button:disabled {
     /* Semantic colors */
     --positive: #788c5d;
     --positive-bg: rgba(120, 140, 93, 0.15);
-    --negative: #ef4444;
-    --negative-bg: rgba(239, 68, 68, 0.15);
+    --negative: #e08b6d;
+    --negative-bg: rgba(224, 139, 109, 0.15);
     --warning: #d97757;
     --warning-bg: rgba(217, 119, 87, 0.15);
     
@@ -1175,4 +1206,5 @@ button:disabled {
   .header-github-link svg {
     stroke: currentColor;
   }
+
 }
