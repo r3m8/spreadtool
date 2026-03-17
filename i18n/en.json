@@ -51,6 +51,7 @@
     "title": "Results",
     "ticker": "Ticker found",
     "marketPrice": "Market price at transaction",
+    "minuteHigh": "Minute high",
     "unitPriceExcl": "Your price per unit (excl. fees)",
     "unitPriceIncl": "Your price per unit (incl. fees)",
     "spread": {

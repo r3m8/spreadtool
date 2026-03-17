@@ -178,9 +178,11 @@ async function getPriceAt(ticker, dateStr, hourVal, minVal, offsetMinutes) {
     throw new Error(i18n.t('errors.farBar', { minutes: Math.round(bestDiff / 60) }));
 
   const typicalPrice = (highs[bestIdx] + lows[bestIdx] + closes[bestIdx]) / 3;
+  const highPrice = highs[bestIdx];
 
   return {
     price:       typicalPrice,
+    high:        highPrice,
     barTimeUTC:  new Date(timestamps[bestIdx] * 1000),
     diffSeconds: bestDiff,
     currency,
@@ -442,7 +444,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const { symbol: ticker, name } = await resolveTicker(isin);
       loadingText.textContent = i18n.t('status.fetching', { ticker, name: name ? ' — ' + name : '' });
 
-      const { price: yahooPrice, barTimeUTC, diffSeconds, currency } =
+      const { price: yahooPrice, high, barTimeUTC, diffSeconds, currency } =
         await getPriceAt(ticker, dateStr, hourVal, minVal, offsetMinutes);
 
       setStatus('');
@@ -454,6 +456,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       setText('res-ticker', name || ticker);
       setText('res-yahoo-price', fmtPrice(yahooPrice, currency));
+      setText('res-minute-high', fmtPrice(high, currency));
       setText('res-unit-price',      fmtPrice(unitPriceExclFees, currency));
       setText('res-unit-price-fees', fmtPrice(unitPriceInclFees, currency));
       setSpread(spread, spreadPct, currency);
